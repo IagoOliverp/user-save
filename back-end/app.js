@@ -971,7 +971,7 @@ app.get("/dashboard-end-tickets", eAdmin, async (req, res) => {
 
 
 
-app.listen(8080, () => {console.log("Servidor iniciado na porta 8080:" + process.env.PORT);
+app.listen(8080, () => {console.log("Servidor iniciado na porta 8080: http://localhost:" + process.env.PORT);
 });       
     
 
