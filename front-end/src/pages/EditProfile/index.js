@@ -5,7 +5,6 @@ import api from '../../config/configApi';
 import { Navigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-
 export const EditProfile = () => {
 
     const [name, setName] = useState("")
@@ -93,10 +92,9 @@ export const EditProfile = () => {
     },[])
 
     function validate(){
-        if(!name) return setStatus({type: 'error', mensagem: 'Erro: necessário preencher o campo!'});
-        if(!email) return setStatus({type: 'error', mensagem: 'Erro: necessário preencher o e-mail!'});
-        /*if(!password) return setStatus({type: 'error', mensagem: 'Erro: necessário preencher o senha!'})
-        if(password.length < 6 ) return setStatus({type: 'error', mensagem: 'Erro: A senha deve ter no mínimo 6 caracteres!'})*/
+        if(!name) return setStatus({type: 'error', mensagem: 'Erro: Necessário preencher o campo!'});
+        if(!email) return setStatus({type: 'error', mensagem: 'Erro: Necessário preencher o e-mail!'});
+
 
         return true;
     }
@@ -106,12 +104,13 @@ export const EditProfile = () => {
         type: 'error',
         mensagem: status.mensagem
     }
+
     const mensagemAdd2 = {
         type: 'success',
         mensagem: status.mensagem
     }
 
-
+    
     return (
         <div>
             <Navbar />
@@ -158,7 +157,6 @@ export const EditProfile = () => {
                                 <button type="submit" className="btn-success">Salvar</button>{" "}
 
                             </form>
-                            
                         </div>
                     </div>
                 </div>

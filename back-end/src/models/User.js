@@ -12,13 +12,22 @@ const User = db.define('users',{ //Definindo as propriedades dos atributos da ta
     name: {
         type: Sequelize.STRING,
         allowNull: false,
+        validate: {
+            len: [1, 80] // Garante que o campo tenha entre 1 e 50 caracteres
+        }
     },
     email: {
         type: Sequelize.STRING,
         allowNull: false,
+        validate: {
+            len: [1, 50] // Garante que o campo tenha entre 1 e 50 caracteres
+        }
     },
     password: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        validate: {
+            len: [1, 100] // Garante que o campo tenha entre 1 e 50 caracteres
+        }
     },
     recover_password: {
         type: Sequelize.STRING
@@ -29,8 +38,6 @@ const User = db.define('users',{ //Definindo as propriedades dos atributos da ta
 });
 
 //Criar a tabela
-//User.sync({alter: true});
-//Verificar se houve alteração na tabela
-//User.sync( {alter: true} );
+User.sync({force: true});
 
 module.exports = User;

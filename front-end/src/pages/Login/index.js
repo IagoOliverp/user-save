@@ -28,7 +28,6 @@ export const Login = () => {
 
     const loginSubmit = async e => { //Submetendo o Login através do evento do botão que irá bater na API com os dados dos Inputs e retornar uma resposta no console
         e.preventDefault();
-        //console.log(user.password);
         setStatus({
             loading: true
         });
@@ -39,10 +38,7 @@ export const Login = () => {
         
         await api.post("/login", user, {headers}) //Chamada da API com método POST que se encontra no back-end
             .then((response) => {
-                //console.log(response);
                 setStatus({
-                    /*type: 'success',
-                    mensagem: response.data.mensagem,*/
                     loading: false
                 });
 
@@ -54,14 +50,12 @@ export const Login = () => {
 
             }).catch((err) => {
                 if (err.response) {
-                    //console.log(err.response);
                     setStatus({
                         type: 'error',
                         mensagem: err.response.data.mensagem,
                         loading: false
                     })
                 }else{
-                    //console.log("Erro: tente mais tarde");
                     setStatus({
                         type: 'error',
                         mensagem: 'Erro: tente mais tarde!',
@@ -81,12 +75,12 @@ export const Login = () => {
             
                             <form onSubmit={loginSubmit} class="form-login">
 
-                            {status.type === 'redDanger' ? <p className="alert-danger">{status.mensagem}</p> : ""}
+                                {status.type === 'redDanger' ? <p className="alert-danger">{status.mensagem}</p> : ""}
 
-                            {status.type === 'error'? <p className="alert-danger">{status.mensagem}</p> : ""}
-                            {status.type === 'success'? <p className="alert-success">{status.mensagem}</p> : ""}
+                                {status.type === 'error'? <p className="alert-danger">{status.mensagem}</p> : ""}
+                                {status.type === 'success'? <p className="alert-success">{status.mensagem}</p> : ""}
 
-                            {status.loading ? <p className="alert-success">Validando...</p> : ""}
+                                {status.loading ? <p className="alert-success">Validando...</p> : ""}
 
                                 <div className="row">
                                     <i className="fas fa-user"></i>
@@ -102,7 +96,7 @@ export const Login = () => {
                                 </div>
 
                                 <div className="signup-link">
-                                    <Link to="/add-user-login" className="link-pg-login">Cadastre-se</Link>{" - "}
+                                    <Link to="/add-user-login" className="link-pg-login">Cadastre-se</Link>{" | "}
                                     <Link to="/recover-password" className="link-pg-login">Esqueci a Senha</Link>
                                 </div>
                                 </form>

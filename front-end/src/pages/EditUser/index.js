@@ -93,10 +93,8 @@ export const EditUser = (props) => {
     },[id])
 
     function validate(){
-        if(!name) return setStatus({type: 'error', mensagem: 'Erro: necessário preencher o campo!'});
-        if(!email) return setStatus({type: 'error', mensagem: 'Erro: necessário preencher o e-mail!'});
-        /*if(!password) return setStatus({type: 'error', mensagem: 'Erro: necessário preencher o senha!'})
-        if(password.length < 6 ) return setStatus({type: 'error', mensagem: 'Erro: A senha deve ter no mínimo 6 caracteres!'})*/
+        if(!name) return setStatus({type: 'error', mensagem: 'Erro: Necessário preencher o campo!'});
+        if(!email) return setStatus({type: 'error', mensagem: 'Erro: Necessário preencher o e-mail!'});
 
         return true;
     }
@@ -123,7 +121,6 @@ export const EditUser = (props) => {
         }
     }
 
-
     const mensagemAdd = {
         type: 'error',
         mensagem: status.mensagem
@@ -132,7 +129,6 @@ export const EditUser = (props) => {
         type: 'success',
         mensagem: status.mensagem
     }
-
 
     return (
         <div>
@@ -186,10 +182,8 @@ export const EditUser = (props) => {
 
                             </form>
                         </div>
-
                     </div>
                 </div>
-
             </div>
         </div>
     )

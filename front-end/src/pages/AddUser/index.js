@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import { Navbar } from '../../components/Navbar';
 import { Sidebar } from '../../components/Sidebar';
 import api from '../../config/configApi';
-/*import * as yup from 'yup';*/
 import { Link, Navigate } from 'react-router-dom';
 
 export const Adduser = () => {
-
 
     const [user, setUser] = useState({
         name: '',
@@ -33,7 +31,7 @@ export const Adduser = () => {
 
         if(!(await validate())) return;
 
-        await api.post("/user", user, {headers})
+        await api.post("/user", user, headers)
         .then((response) => {
             setStatus({
                 type:'success',
@@ -63,28 +61,6 @@ export const Adduser = () => {
         return true;
     }
 
-    /*(Utilizando o Yup para validação dos campos)
-    async function validate() {
-        let schema = yup.object().shape({
-            name: yup.string("Erro: Necessário preencher o campo nome 4!").required("Erro: Necessário preencher o campo 4!")
-        })
-
-        try {
-            await schema.validate({
-                name: user.name,
-                email: user.email,
-                password: user.password
-            });
-            return true
-        } catch (err) {
-            setStatus({
-                type: 'error',
-                mensagem: err.errors
-            });
-            return false;
-        }
-    }*/
-
     const mensagemAdd = {
         type: status.type,
         mensagem: status.mensagem
@@ -96,7 +72,7 @@ export const Adduser = () => {
             <div className="content">
                 <Sidebar active="users" />
 
-                <div class="wrapper">
+                <div class="wrapper table-sm-list">
                     <div class="row">
                         <div class="top-content-adm">
                             <span class="title-content">Cadastrar Usuário</span>
@@ -139,7 +115,6 @@ export const Adduser = () => {
 
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>

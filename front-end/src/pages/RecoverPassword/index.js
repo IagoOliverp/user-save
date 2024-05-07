@@ -7,7 +7,7 @@ export const RecoverPassword = () => {
 
     const [user, setUser] = useState({
         email: "",
-        url: "http://localhost:3000/update-password/"
+        url: "http://localhost:82/update-password/"
     });
 
     const [status, setStatus] = useState({
@@ -29,7 +29,7 @@ export const RecoverPassword = () => {
             'Content-Type': 'application/json'
         }
 
-        await api.post("/recover-password", user, headers ) 
+        await api.post("/recover-password", user, headers) 
 
             .then((response) => {
                 setStatus({
@@ -52,7 +52,6 @@ export const RecoverPassword = () => {
                     })
                 }
                 });
-            
 }
 
 const mensagemAdd = {
@@ -68,26 +67,26 @@ const mensagemAdd = {
                         <span>Recuperar Senha</span>
                     </div>
 
-            <form onSubmit={recoverPass} className="form-login">
-                
-                {status.type === 'error'? <p className="alert-danger">{status.mensagem}</p> : ""}
-                {status.type === 'success'? <p className="alert-success">{status.mensagem}</p> : ""}
-                {status.type ==='redSuccess' ? <Navigate to="/" state={mensagemAdd}/> : ""}
+                    <form onSubmit={recoverPass} className="form-login">
+                        
+                        {status.type === 'error'? <p className="alert-danger">{status.mensagem}</p> : ""}
+                        {status.type === 'success'? <p className="alert-success">{status.mensagem}</p> : ""}
+                        {status.type ==='redSuccess' ? <Navigate to="/" state={mensagemAdd}/> : ""}
 
-                <div className="row">
-                    <i className="fas fa-envelope"></i>
-                    <input type="text" name="email" placeholder="Digite o e-mail" onChange={valueInput}/>
-                </div>
-    
-                <div className="row button">
-                    {status.loading ? <button type="submit" disabled className="button-login">Enviando...</button> : <button type="submit" className="button-login">Enviar</button>}<br /><br />
-                </div>
-                
-                <div className="signup-link">
-                    <Link to="/add-user-login" className="link-pg-login">Cadastre-se</Link>{" "}
-                    - Lembrou a Senha? <Link to="/" className="link-pg-login">Clique aqui</Link>
-                </div>
-            </form>
+                        <div className="row">
+                            <i className="fas fa-envelope"></i>
+                            <input type="text" name="email" placeholder="Digite o e-mail" onChange={valueInput}/>
+                        </div>
+            
+                        <div className="row button">
+                            {status.loading ? <button type="submit" disabled className="button-login">Enviando...</button> : <button type="submit" className="button-login">Enviar</button>}<br /><br />
+                        </div>
+                        
+                        <div className="signup-link">
+                            <Link to="/add-user-login" className="link-pg-login">Cadastre-se</Link>{" "}
+                            | Lembrou a Senha? <Link to="/" className="link-pg-login">Clique aqui</Link>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

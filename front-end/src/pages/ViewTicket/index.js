@@ -4,7 +4,6 @@ import { Sidebar } from "../../components/Sidebar";
 import api from '../../config/configApi';
 import { useParams, Link, Navigate } from "react-router-dom";
 import { servDeleteTicket  } from "../../services/ServDeleteTicket";
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const ViewTicket = (props) => {
@@ -138,7 +137,7 @@ export const ViewTicket = (props) => {
            <div className="content">
                 <Sidebar active="list-tickets"/>
 
-                <div className="wrapper">
+                <div className="wrapper table-sm-list">
                     <div className="row">
                         <div className="top-content-adm">
                             <span className="title-content">Visualizar chamado</span>
@@ -228,9 +227,9 @@ export const ViewTicket = (props) => {
 
                                 <div className="row-input">
                                     <div className="column">
-                                        <div className="info-ticket">
-                                            <span className="title-desc">Descrição: </span>
-                                            <span className="info-desc">{data.descricao_problema}</span>
+                                        <div className="info-ticket" >
+                                            <span className="title-desc info-desc-fit">Descrição: </span>
+                                            <span className="info-desc info-desc-fit">{data.descricao_problema}</span>
                                         </div>
                                     </div>
                                 </div>

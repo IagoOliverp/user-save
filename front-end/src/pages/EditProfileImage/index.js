@@ -11,8 +11,6 @@ export const EditProfileImage = () => {
 
     const [endImg, setEndImg] = useState('');
 
-    //const [endImg, setEndImg] = useState(localStorage.getItem('image'));
-
     const [status, setStatus] = useState({
         type: '',
         mensagem: ''
@@ -51,7 +49,6 @@ export const EditProfileImage = () => {
                 })
             }
         })
-
     }
 
     useEffect(() => {
@@ -86,7 +83,7 @@ export const EditProfileImage = () => {
                     });
                 }
             })
-    
+            
         }
         getUser()
     },[]);
@@ -113,7 +110,7 @@ export const EditProfileImage = () => {
 
                         <div className="alert-content-adm">
                             {status.type === 'redSuccess' ? <Navigate to= "/view-profile" state={mensagemAdd}/> : ""}   
-                            {status.type === "error" ? <p className="alert-danger">{status.mensagem}</p> : ""}
+                            {status.type === 'error' ? <p className="alert-danger">{status.mensagem}</p> : ""}
                         </div>
 
                         <div className="content-adm">
@@ -124,9 +121,6 @@ export const EditProfileImage = () => {
 
                                 <label>Imagem*: </label><br /><br />
                                 <input type="file" name="image" onChange={e => setImage(e.target.files[0])}/><br /><br />
-
-                                {/*image ? <img src={URL.createObjectURL(image)} alt="Imagem do Usuário" width="150" height="150"/> 
-                                : <img src={endImg} alt="Imagem do Usuário" width="150" height="150"/>*/}
 
                                 * Campo obrigatório<br /><br />
                                 <button type="submit" className="btn-success">Salvar</button>

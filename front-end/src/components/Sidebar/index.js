@@ -6,10 +6,6 @@ export const Sidebar = (props) => {
     
     const { handleLogout } = useContext(Context);
 
-    /*const dropdownUserNavbar = async () => {
-        document.getElementById("dropNavbarUser").classList.toggle("dropdown-menu-action");
-    }*/
-
     return (
         <div id="barsSidebar" className="sidebar">
             <Link to="/dashboard" className={props.active === "dashboard" ? "sidebar-nav active" : "sidebar-nav"}><i className="icon fas fa-tachometer-alt"></i><span>Dashboard</span></Link>

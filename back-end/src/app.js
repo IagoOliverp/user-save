@@ -154,7 +154,6 @@ app.post("/user", eAdmin, async (req, res) => { //Rota para cadastrar usuário n
         });
 });
 
-
 app.put("/user", eAdmin, async (req, res) => { //Rota para editar atributos do usuário do banco através do ID
     const {id} = req.body;
 
@@ -583,7 +582,7 @@ app.put("/edit-profile-image", eAdmin, upload.single('image'), async (req, res) 
 
         await User.findByPk(req.userId)
         .then(user => {
-            const imgOld = "./public/upload/users/" + user.dataValues.image;
+            const imgOld = "./src/public/upload/users/" + user.dataValues.image;
             fs.access(imgOld, (err) => {
                 if(!err){
                     fs.unlink(imgOld, () => {});
@@ -626,7 +625,7 @@ app.put("/edit-user-image/:id", eAdmin, upload.single('image'), async (req, res)
 
         await User.findByPk(id)
         .then(user => {
-            const imgOld = "./public/upload/users/" + user.dataValues.image;
+            const imgOld = "./src/public/upload/users/" + user.dataValues.image;
             fs.access(imgOld, (err) => {
                 if(!err){
                     fs.unlink(imgOld, () => {});

@@ -93,15 +93,6 @@ export const EditUserPassword = (props) => {
         getUser();
     },[id])
 
-    /*function validate(){
-        if(!name) return setStatus({type: 'error', mensagem: 'Erro: necessário preencher o campo!'});
-        if(!email) return setStatus({type: 'error', mensagem: 'Erro: necessário preencher o e-mail!'});
-        if(!password) return setStatus({type: 'error', mensagem: 'Erro: necessário preencher o senha!'})
-        if(password.length < 6 ) return setStatus({type: 'error', mensagem: 'Erro: A senha deve ter no mínimo 6 caracteres!'})
-
-        return true;
-    }*/
-
     async function validate() {
         let schema = yup.object().shape({
             password: yup.string("Erro: Necessário preencher o campo senha!").required("Erro: Necessário preencher o campo senha!").min(6, "Erro: A senha deve ter no mínimo 6 caracteres!")

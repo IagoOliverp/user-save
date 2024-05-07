@@ -83,18 +83,12 @@ export const Viewuser = (props) => {
         }
     }
 
-
-    /*const mensagemAdd = {
-        type: status.type,
-        mensagem: status.mensagem
-    }*/
-
     const mensagemAdd = {
-        type: "success",
+        type: "redSuccess",
         mensagem: status.mensagem
     }
     const mensagemAdd2 = {
-        type: "error",
+        type: "redError",
         mensagem: status.mensagem
     }
 
@@ -119,6 +113,7 @@ export const Viewuser = (props) => {
                         <div className="alert-content-adm">
                             {status.type === 'redSuccess' ? <Navigate to="/users" state={mensagemAdd}/> : ""}   
                             {status.type === 'redError' ? <Navigate to="/users" state={mensagemAdd2}/> : ""}
+                            {status.type === "success" ? <p style={{color: "green"}}>{status.mensagem}</p> : ""}
                         </div>
 
                         <div className="content-adm">
@@ -137,7 +132,6 @@ export const Viewuser = (props) => {
                             </div>
                             <button type="button" onClick={() => deleteUser(data.id)} className="btn-danger">Apagar</button>
                         </div>
-
                     </div>
                 </div>
             </div>

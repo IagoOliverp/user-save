@@ -25,10 +25,6 @@ export const UpdatePassword = (props) => {
 
             await api.get("val-key-recover-pass/" + key, headers)
             .then((response) => {
-                /*setStatus({
-                    type: 'success',
-                    mensagem: response.data.mensagem
-                })*/
             }).catch((err) => {
                 if(err.response) {
                     setStatus({
@@ -115,31 +111,29 @@ export const UpdatePassword = (props) => {
                         <span>Editar a Senha</span>
                     </div>
 
-            <form onSubmit={updatePassword} className="form-login">
+                    <form onSubmit={updatePassword} className="form-login">
 
-            {status.type === 'redDanger' ? <Navigate to={"/"} state={mensagemAdd}/> : ""}
-            {status.type === 'redSuccess' ? <Navigate to={"/"} state={mensagemAdd2}/> : ""}
-            {/*status.type === 'error' ? <Navigate to={"/"} state={mensagemAdd}/> : ""*/}
-            {/*status.type === 'error'? <p className="alert-danger">{status.mensagem}</p> : ""*/}
-            {status.type === 'success' ? <p style={{ color: "green" }}>{status.mensagem}</p> : ""}
+                        {status.type === 'redDanger' ? <Navigate to={"/"} state={mensagemAdd}/> : ""}
+                        {status.type === 'redSuccess' ? <Navigate to={"/"} state={mensagemAdd2}/> : ""}
+                        {status.type === 'success' ? <p style={{ color: "green" }}>{status.mensagem}</p> : ""}
 
-                <div className="row">
-                    <i className="fas fa-lock"></i>
-                    <input type="password" name="password" placeholder="Digite a sua Senha" autoComplete="on" onChange={text => setPassword(text.target.value)}></input><br />
-                </div>
+                        <div className="row">
+                            <i className="fas fa-lock"></i>
+                            <input type="password" name="password" placeholder="Digite a sua Senha" autoComplete="on" onChange={text => setPassword(text.target.value)}></input><br />
+                        </div>
             
-                <p>*Campo obrigatório</p><br />
+                        <p>*Campo obrigatório</p><br />
                 
-                <div className="row button">
-                    <button type="submit" className="button-login">Salvar</button><br /><br />
+                        <div className="row button">
+                            <button type="submit" className="button-login">Salvar</button><br /><br />
+                        </div>
+                
+                        <div className="signup-link">
+                        Lembrou a Senha? <Link to="/" className="link-pg-login">Clique aqui</Link>
+                        </div>
+                
+                    </form>
                 </div>
-                
-                <div className="signup-link">
-                Lembrou a Senha? <Link to="/" className="link-pg-login">Clique aqui</Link>
-                </div>
-                
-            </form>
-            </div>
             </div>
         </div>
     );

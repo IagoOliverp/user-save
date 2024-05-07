@@ -90,15 +90,6 @@ export const EditProfilePassword = () => {
         getUser();
     },[])
 
-    /*function validate(){
-        if(!name) return setStatus({type: 'error', mensagem: 'Erro: necessário preencher o campo!'});
-        if(!email) return setStatus({type: 'error', mensagem: 'Erro: necessário preencher o e-mail!'});
-        if(!password) return setStatus({type: 'error', mensagem: 'Erro: necessário preencher o senha!'})
-        if(password.length < 6 ) return setStatus({type: 'error', mensagem: 'Erro: A senha deve ter no mínimo 6 caracteres!'})
-
-        return true;
-    }*/
-
     async function validate() {
         let schema = yup.object().shape({
             password: yup.string("Erro: Necessário preencher o campo senha!").required("Erro: Necessário preencher o campo 4!").min(6, "Erro: A senha deve ter no mínimo 6 caracteres!")
@@ -125,14 +116,13 @@ export const EditProfilePassword = () => {
         mensagem: status.mensagem
     }
 
-
     return (
         <div>
             <Navbar />
             <div className="content">
                 <Sidebar />
 
-                <div className="wrapper">
+                <div className="wrapper table-sm-list">
                     <div className="row">
                         <div className="top-content-adm">
                             <span className="title-content" >Editar senha do Perfil</span>

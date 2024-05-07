@@ -21,13 +21,22 @@ const Chamados = db.define('chamados', {
     contato_celular: {
         type: Sequelize.STRING,
         allowNull: false,
+        validate: {
+            len: [1, 20] // Garante que o campo tenha entre 1 e 50 caracteres
+        }
     },
     email: {
         type: Sequelize.STRING,
+        validate: {
+            len: [1, 50] // Garante que o campo tenha entre 1 e 50 caracteres
+        }
     },
     localizacao: {
         type: Sequelize.STRING,
         allowNull: false,
+        validate: {
+            len: [1, 50] // Garante que o campo tenha entre 1 e 50 caracteres
+        }
     },
     tipo: {
         type: Sequelize.STRING,
@@ -40,6 +49,9 @@ const Chamados = db.define('chamados', {
     titulo_chamado: {
         type: Sequelize.STRING,
         allowNull: false,
+        validate: {
+            len: [1, 150] // Garante que o campo tenha entre 1 e 50 caracteres
+        }
     },
     descricao_problema: {
         type: Sequelize.TEXT,
@@ -50,10 +62,11 @@ const Chamados = db.define('chamados', {
     },
     status_chamado: {
         type: Sequelize.STRING,
+        defaultValue: 'Novo'
     },
     
 });
 
 module.exports = Chamados;
 
-//Chamados.sync({force: true});
+Chamados.sync({force: true});

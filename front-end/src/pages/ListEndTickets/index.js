@@ -2,14 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { Navbar } from "../../components/Navbar";
 import { Sidebar } from "../../components/Sidebar";
-import useDropdownList from "../../hooks/useDropdownList";
 import api from "../../config/configApi";
 
 export const ListEndTickets = () => {
 
     const { state } = useLocation();
-
-    const { actionDropdown, closeDropdownAction} = useDropdownList(); 
 
     const [data, setData] = useState([]);
 
@@ -65,11 +62,11 @@ export const ListEndTickets = () => {
             <div className="content">
                 <Sidebar active="list-tickets"/>
 
-                <div className="wrapper">
+                <div className="wrapper table-sm-list">
                     <div className="row">
                         <div className="top-content-adm">
                             <span className="title-content">Lista de chamados atendidos</span>
-                            <div class="top-content-adm-right">
+                            <div className="top-content-adm-right">
                                 <Link to="/list-tickets"><button type="button" class="btn-primary">Listar chamados</button></Link>
                             </div>
                         </div>
@@ -83,38 +80,36 @@ export const ListEndTickets = () => {
                             <thead className="list-head">
                                 <tr>
                                     <th className="list-head-content">ID</th>
-                                    <th className="list-head-content table-sm-none">Nome Usuário</th>
-                                    <th className="list-head-content">Departamento</th>
-                                    <th className="list-head-content">Tipo</th>
-                                    <th className="list-head-content">Categoria</th>
+                                    <th className="list-head-content">Nome Usuário</th>
+                                    <th className="list-head-content table-sm-none">Departamento</th>
+                                    <th className="list-head-content table-sm-none">Tipo</th>
                                     <th className="list-head-content">Título</th>
+                                    <th className="list-head-content">Categoria</th>
                                     <th className="list-head-content table-sm-none">Prioridade</th>
                                     <th className="list-head-content">Status</th>
-                                    <th className="list-head-content">Aberto em</th>
+                                    <th className="list-head-content table-sm-none ">Aberto em</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {data.map(chamado => (
                                     <tr key={chamado.id}>
                                         <td className="list-body-content">{chamado.id}</td>
-                                        <td className="list-body-content table-sm-none">{chamado.nome_usuario}</td>
-                                        <td className="list-body-content">{chamado.localizacao}</td>
-                                        <td className="list-body-content">{chamado.tipo}</td>
-                                        <td className="list-body-content">{chamado.categoria}</td>
+                                        <td className="list-body-content">{chamado.nome_usuario}</td>
+                                        <td className="list-body-content table-sm-none">{chamado.localizacao}</td>
+                                        <td className="list-body-content table-sm-none">{chamado.tipo}</td>
                                         <td className="list-body-content">{chamado.titulo_chamado}</td>
+                                        <td className="list-body-content">{chamado.categoria}</td>
+                                    
                                         <td className="list-body-content table-sm-none">{chamado.prioridade}</td>
-                                        <td className="list-body-content status-finished">{chamado.status_chamado}</td>
-                                        <td className="list-body-content">{chamado.createdAt}</td>
+                                        {chamado.status_chamado === "Novo" ? <td className="list-body-content status-new">{chamado.status_chamado}</td> : ""}
+                                        {chamado.status_chamado === "Em andamento" ? <td className="list-body-content status-working">{chamado.status_chamado}</td> : ""}
+                                        {chamado.status_chamado === "Atendido" ? <td className="list-body-content status-finished">{chamado.status_chamado}</td> : ""}
+                                        {chamado.status_chamado === "" ? <td className="list-body-content status-null">---</td> : ""}
+                                        <td className="list-body-content table-sm-none ">{chamado.createdAt}</td>
                                         <td className="list-body-content">
-                                            <div className="dropdown-action">
-                                                <button onClick={() => {closeDropdownAction(); actionDropdown(chamado.id)}} className="dropdown-btn-action">Ações</button>
-                                                <div id= {"actionDropdown" + chamado.id} className="dropdown-action-item">
-                                                    <Link to={"/view-ticket/" + chamado.id}>Visualizar</Link>
-                                                </div>
-                                            </div>
+                                            <Link to={"/view-ticket/" + chamado.id}><button type="button" className="btn-info">Ver</button></Link>
                                         </td>
                                     </tr>
-
                                 ))}
 
                             </tbody>

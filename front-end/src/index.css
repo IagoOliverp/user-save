@@ -39,10 +39,75 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/*code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}*/
+  
+/*Medias QUERYS*/
+
+@media all and (max-width: 568px) {
+  .row .box {
+    width: 100%;
+  }
+
+  .content-adm .table-list{
+    font-size: 12px;
+    margin-left: -15px;
+  }
+  .table-sm-none{
+    display: none;
+  }
+
+  .content .sidebar{
+    display: none;
+  }
+
+  .content .sidebar-active {
+    display: block;
+  }
+}
+
+@media all and (min-width: 569px) and (max-width: 768px) {
+  .row .box {
+    width: 23%;
+  }
+
+  .content-adm .table-list{
+    font-size: 12px;
+  }
+  
+  .table-md-none {
+    display: none;
+  }
+
+  .content .sidebar {
+    width: 60px;
+    position: fixed;
+    z-index: 1;
+    width: 0;
+  }
+}
+
+@media all and (min-width: 769px) and (max-width: 1200px) {
+  .row .box {
+    width: 23%;
+  }
+
+  .content-adm .table-list{
+    font-size: 13px;
+  }
+
+  .table-lg-none {
+    display: none;
+}
+}
+
+@media all and (min-width: 1201px) {
+  .row .box {
+    width: 23%;
+  }
+
+  .table-xl-none {
+    display: none;
+  }
+}
 
 .d-flex{
   display: flex;
@@ -298,13 +363,7 @@ body {
   background-color: var(--second-bg-color);
 }
 
-
 /*Apresentar a mensagem inteira */
-
-
-/*.dropdown-menu li:hover .text {
-    white-space: pre-wrap;
-}*/
 
 .dropdown-menu .item span {
   margin-right: 15px;
@@ -329,7 +388,6 @@ body {
   display: flex;
 }
 
-
 /* Inicio Sidebar */
 
 .content .sidebar {
@@ -347,15 +405,6 @@ body {
   flex-shrink: 0;
 }
 
-@media (max-width: 768px) {
-  .content .sidebar {
-      width: 60px;
-      position: fixed;
-      z-index: 1;
-      width: 0;
-  }
-}
-
 .content .sidebar:hover,
 .content .sidebar.active {
   width: 250px;
@@ -363,6 +412,7 @@ body {
 
 .content .sidebar-active {
   width: 250px;
+
 }
 
 .sidebar .sidebar-nav {
@@ -432,7 +482,7 @@ body {
 }
 
 .row .box {
-  width: 23%;
+  
   margin: 5px 1%;
   height: 150px;
   position: relative;
@@ -478,24 +528,6 @@ body {
   position: relative;
 }
 
-@media (max-width: 1024px) {
-  .row .box {
-      width: 48%;
-  }
-}
-
-@media (max-width: 768px) {
-  .row .box {
-      width: 98%;
-  }
-}
-
-@media (max-width: 600px) {
-  .wrapper .row {
-      padding: 10px 2px;
-  }
-}
-
 /*Listar Usuários*/
 
 .row .top-content-adm {
@@ -520,6 +552,14 @@ body {
   width: 100%;
   overflow: hidden;
   margin: 0 5px;
+}
+
+.content-adm .table-list{
+  word-wrap: break-word;
+ 
+}
+.table-md-none{
+  display: none;
 }
 
 .table-list {
@@ -565,39 +605,6 @@ body {
   text-align: center;
 }
 
-@media (max-width: 540px) {
-  .table-sm-none {
-      display: none;
-  }
-}
-
-@media (max-width: 720px) {
-  .table-md-none {
-      display: none;
-  }
-}
-
-@media (max-width: 960px) {
-  .table-lg-none {
-      display: none;
-  }
-}
-
-@media (max-width: 1140px) {
-  .table-xl-none {
-      display: none;
-  }
-}
-
-@media (max-width: 430px) {
-  .navbar {
-      width: 840px
-  }
-  .wrapper .row {
-    width: 800px;
-  }
-}
-
 .content-pagination {
   margin: 15px 0;
   width: 100%;
@@ -627,7 +634,6 @@ body {
 .pagination a:hover:not(.active) {
   background-color: var(--main-color);
 }
-
 
 /* Personalizar botao */
 
@@ -843,6 +849,11 @@ textarea.input-adm:focus {
   border: 1px solid;
   border-radius: 10px;
   padding: 5px;
+  word-wrap: break-word;
+}
+
+.info-desc-fit {
+  display: block;
 }
 
 .input-option{
@@ -860,7 +871,3 @@ textarea.input-adm:focus {
 .row-btn-ticket button{
   width: 120px;
 }
-
-
-
-

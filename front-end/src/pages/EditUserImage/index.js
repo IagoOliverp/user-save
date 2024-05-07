@@ -34,7 +34,7 @@ export const EditUserImage = (props) => {
         await api.put("/edit-user-image/" + id, formData, headers)
         .then((response) => {
             setStatus({
-                type: 'redSuccess',
+                type: 'success',
                 mensagem: response.data.mensagem
             });
         }).catch((err) => {
@@ -50,7 +50,7 @@ export const EditUserImage = (props) => {
                 });
             }
         });
-
+        
     }
 
 useEffect(() => {
@@ -96,7 +96,7 @@ useEffect(() => {
         if (response) {
             if (response.type === "success"){
                 setStatus({
-                    type: 'redSuccess',
+                    type: 'success',
                     mensagem: response.mensagem
                 })
             }else {
@@ -141,7 +141,7 @@ useEffect(() => {
                         </div>
 
                         <div className="alert-content-adm">
-                            {status.type === 'redSuccess' ? <Navigate to= {"/view-user/" + id} state={mensagemAdd}/> : ""}   
+                            {status.type === 'success' ? <Navigate to= {"/view-user/" + id} state={mensagemAdd}/> : ""} 
                             {status.type === 'redWarning' ? <Navigate to= "/users" state={mensagemAdd2}/>: ""}
                             {status.type === "error" ? <p className="alert-danger">{status.mensagem}</p> : ""}
                         </div>
@@ -155,8 +155,6 @@ useEffect(() => {
                                 <label>Imagem: </label><br /><br />
                                 <input type="file" name="image" onChange={e => setImage(e.target.files[0])}/><br /><br />
 
-                                {/*image ? <img src={URL.createObjectURL(image)} alt="Imagem do Usuário" width="150" height="150"/> 
-                                : <img src={endImg} alt="Imagem do Usuário" width="150" height="150"/>*/}
 
                                 * Campo obrigatório<br /><br />
                                 <button type="submit" className="btn-success">Salvar</button>{" "}

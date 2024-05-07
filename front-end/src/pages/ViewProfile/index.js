@@ -58,12 +58,6 @@ export const ViewProfile = () => {
         getUser();
     },[])
 
-
-    /*const mensagemAdd = {
-        type: status.type,
-        mensagem: status.mensagem
-    }*/
-
     const mensagemAdd = {
         type: "error",
         mensagem: status.mensagem

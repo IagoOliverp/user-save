@@ -48,14 +48,12 @@ export const AddUserLogin = () => {
                    })
                 }
             })
-
-
     }
 
     function validate() {
-        if(!user.name) return setStatus({type: 'error', mensagem: 'Erro: necessário preencher o campo!'});
-        if(!user.email) return setStatus({type: 'error', mensagem: 'Erro: necessário preencher o e-mail!'});
-        if(!user.password) return setStatus({type: 'error', mensagem: 'Erro: necessário preencher o senha!'});
+        if(!user.name) return setStatus({type: 'error', mensagem: 'Erro: Necessário preencher o campo!'});
+        if(!user.email) return setStatus({type: 'error', mensagem: 'Erro: Necessário preencher o e-mail!'});
+        if(!user.password) return setStatus({type: 'error', mensagem: 'Erro: Necessário preencher o senha!'});
         if(user.password.lengh < 6 ) return setStatus({type: 'error', mensagem: 'Erro: A senha deve ter no mínimo 6 caracteres!'});
 
         return true;
@@ -66,7 +64,6 @@ export const AddUserLogin = () => {
         mensagem: status.mensagem
     }
 
-   
     return (//Formulário de login do usuário
         <div className="d-flex">
             <div className="container-login">
@@ -94,14 +91,14 @@ export const AddUserLogin = () => {
                 <input type="password" name="password" placeholder="Digite a sua Senha" autoComplete="on" onChange={valueInput}></input><br /><br />
             </div>
                 
-            <p>*Campo obrigatório</p><br />
+            <p>*Campos obrigatórios</p><br />
                 
                 <div className="row button">
                     <button type="submit" className="button-login">Cadastrar</button><br /><br />
                 </div>
                 
                 <div className="signup-link">
-                    Voltar para o Login? - <Link to="/" className="link-pg-login">Clique aqui</Link>
+                    Voltar para o Login? | <Link to="/" className="link-pg-login">Clique aqui</Link>
                 </div>
                 
             </form>

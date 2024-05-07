@@ -1,0 +1,46 @@
+services:
+  mysql-usersave:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-usersave-volume:/data/db
+    environment:
+      MYSQL_ROOT_PASSWORD: "46196536"
+      MYSQL_DATABASE: "iago"
+    restart: always
+
+  backend:
+    container_name: backend-usersave
+    build: ./back-end
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysql-usersave
+    env_file:
+      - ./back-end/.env
+
+  frontend:
+    container_name: frontend-usersave
+    build: ./front-end
+    depends_on:
+      - backend
+    volumes:
+      - frontend-volume:/var/www/html
+
+  nginx:
+    container_name: nginx-usersave
+    build: ./nginx
+    ports:
+      - 82:82
+    volumes:
+      - frontend-volume:/var/www/html
+    depends_on:
+      - mysql-usersave
+      - backend
+      - frontend
+      
+volumes:
+  mysql-usersave-volume:
+  frontend-volume: 

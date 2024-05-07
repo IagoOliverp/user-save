@@ -87,7 +87,7 @@ export const Addticket = () => {
     }
 
     function validate(){
-        if(!(ticket.contato_celular || ticket.contato_email)) return setStatus({type: 'error', mensagem: 'Erro: Necessário preencher um contato ao menos!'});
+        if(!(ticket.contato_celular || ticket.contato_email)) return setStatus({type: 'error', mensagem: 'Erro: Necessário preencher o campo contato!'});
         if(!ticket.localizacao) return setStatus({type: 'error', mensagem: 'Erro: Necessário preencher o campo localização!'});
         if(!ticket.tipo) return setStatus({type: 'error', mensagem: 'Erro: Necessário selecionar o tipo!'});
         if(!ticket.categoria) return setStatus({type: 'error', mensagem: 'Erro: Necessário selecionar categoria!'});
@@ -109,7 +109,7 @@ export const Addticket = () => {
             <div className="content">
                 <Sidebar active="add-ticket" />
 
-                <div className="wrapper">
+                <div className="wrapper table-sm-list">
                     <div className="row">
                         <div className="top-content-adm">
                             <span className="title-content">Abrir chamado</span>
@@ -142,7 +142,7 @@ export const Addticket = () => {
                         <div className="row-input">
                             <div className="column">
                                 <label className="title-adm">Contato celular</label>
-                                <input id="contato_celular" name="contato_celular" type="text" className="input-adm" placeholder="Digite o número para contato" onChange={valueInput}/>
+                                <input id="contato_celular" name="contato_celular" type="text" className="input-adm input-sm" placeholder="Digite o número para contato" onChange={valueInput}/>
                             </div>
                         </div>
 
@@ -172,9 +172,10 @@ export const Addticket = () => {
                                 <option ></option>
                                 <option >E-mail</option>
                                 <option >Senha</option>
-                                <option >Conexão</option>
+                                <option >Rede</option>
                                 <option >Impressora</option>
-                                <option >Insulmos</option>
+                                <option >Insulmo e Suprimentos</option>
+                                <option >Telefonia</option>
                             </select> <br /><br />
 
                             <label for="opcoes_prioridade">Selecione a prioridade: </label>
@@ -205,13 +206,10 @@ export const Addticket = () => {
 
                     </div>
                     </div>
-
                 </div>
             </div>
-
         </div>
     )
-
 }
 
 
