@@ -33,7 +33,7 @@ services:
     container_name: nginx-usersave
     build: ./nginx
     ports:
-      - 82:82
+      - 80:80
     volumes:
       - frontend-volume:/var/www/html
     depends_on:
