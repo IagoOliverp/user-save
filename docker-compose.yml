@@ -1,5 +1,6 @@
 services:
   mysql-usersave:
+    container_name: mysql-usersave
     image: mysql:latest
     ports:
       - "3306:3306"
