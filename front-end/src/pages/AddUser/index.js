@@ -40,12 +40,12 @@ export const Adduser = () => {
         }).catch((err) => {
             if (err.response) {
                 setStatus({
-                    type: 'error',
+                    type: "error",
                     mensagem: err.response.data.mensagem
                 })
             } else {
                 setStatus({
-                    type: 'error',
+                    type: "error",
                     mensagem: "Erro: Tente novamente!"
                 })
             }
