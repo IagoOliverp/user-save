@@ -7,7 +7,7 @@ export const RecoverPassword = () => {
 
     const [user, setUser] = useState({
         email: "",
-        url: "http://54.91.39.146/update-password/"
+        url: "http://54.91.39.146/api/update-password/"
     });
 
     const [status, setStatus] = useState({
