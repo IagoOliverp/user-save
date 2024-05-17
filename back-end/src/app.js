@@ -210,21 +210,6 @@ app.put("/user", eAdmin, async (req, res) => { //Rota para editar atributos do u
 app.put("/user-senha", eAdmin, async (req, res) => { //Rota para editar a senha do usuário do banco já criptografada
     const {id, password} = req.body;
 
-    /*const schema = yup.object().shape({
-        password: yup.string("Erro necessário preencher o campo senha!")
-        .required("Erro necessário preencher o campo senha!")
-        .min(6, "Erro: A senha deve ter no mínimo 6 caracteres!"),
-    });
-
-    try{
-        await schema.validate(dados);
-    }catch(err){
-        return res.status(400).json({
-            erro: true,
-            mensagem: err.errors
-        })
-    }*/
-
     var senhaCrypt = await bcrypt.hash(password, 8);
 
     await User.update({password: senhaCrypt}, {where: {id}})
@@ -261,14 +246,6 @@ app.delete("/user/:id", eAdmin, async (req, res) => { //Rota para deletar o usu�
 
 app.post("/login", async (req, res) => { //Rota para logar pelo email e senha do usuário do banco com condições
 
-    /*await sleep(3000);
-
-    function sleep(ms) {
-        return new Promise((resolve) => {
-            setTimeout(resolve, ms);
-        });
-    };*/
-
     const user = await User.findOne({
         attributes: ['id', 'name', 'email', 'password', 'image'],
         where: {
@@ -291,7 +268,7 @@ app.post("/login", async (req, res) => { //Rota para logar pelo email e senha do
     };
 
     var token = jwt.sign({id: user.id}, process.env.SECRET,{
-        expiresIn: '7d', //7 dias
+        expiresIn: 86400, 
     });
 
     const { name,  image } = user;
@@ -407,8 +384,6 @@ app.put("/edit-profile", eAdmin, async (req, res) => { //Rota para editar atribu
 
     const schema = yup.object().shape({
 
-        /*password: yup.string("Erro necessário preencher o campo senha!")
-        .required("Erro necessário preencher o campo senha!"),*/
         email: yup.string("Erro necessário preencher o campo e-mail!").email("Erro necessário preencher o campo e-mail!")
         .required("Erro necessário preencher o campo e-mail"),
         name: yup.string("Erro: Necessário preencher o campo nome!")
@@ -967,8 +942,6 @@ app.get("/dashboard-end-tickets", eAdmin, async (req, res) => {
         })
     })
 })
-
-
 
 app.listen(8080, () => {console.log("Servidor iniciado na porta 8080: http://localhost:" + process.env.PORT);
 });       
